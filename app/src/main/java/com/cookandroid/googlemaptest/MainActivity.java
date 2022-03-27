@@ -10,11 +10,13 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
+    private UiSettings mUiSettings;
     Button showMapButton;
 
     @Override
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mUiSettings = mMap.getUiSettings();
 
         LatLng SEOUL = new LatLng(37.56, 126.97);
 
@@ -49,5 +52,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // 지도 표시 형식 변경
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        // 줌 가능 여부 설정
+        mUiSettings.setZoomControlsEnabled(true);
+
+
     }
 }
